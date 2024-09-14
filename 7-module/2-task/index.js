@@ -4,15 +4,16 @@ export default class Modal {
   constructor() {
     this.elem = createElement(this.template())
   }
-  setTitle(text) {
-    const title = this.elem.querySelector('.modal__title')
-    title.textContent = text
 
+  setTitle(text) {
+    const title = this.elem.querySelector('.modal__title');
+    title.textContent = text;
   }
+
   setBody(mbody) {
-    const modalBody = this.elem.querySelector('.modal__body')
-    modalBody.innerHTML = ''
-    modalBody.append(mbody)
+    const modalBody = this.elem.querySelector('.modal__body');
+    modalBody.innerHTML = '';
+    modalBody.append(mbody);
   }
 
   template() {
@@ -37,30 +38,27 @@ export default class Modal {
     return template
   }
   open(){
-    let body = document.body
-    body.classList.add('is-modal-open')
-    body.append(this.elem)
-
+    let body = document.body;
+    body.classList.add('is-modal-open');
+    body.append(this.elem);
     
-    const modalClose = this.elem.querySelector('.modal__close')
+    const modalClose = this.elem.querySelector('.modal__close');
 
-    const clickEsc = function (event) {
+    const clickEsc = (event) =>  {
       if (event.code === 'Escape' || (modalClose && event.target.closest('.modal__close'))) {
-       // body.classList.remove('is-modal-open')
-       // body.querySelector('.modal').remove()
-       this.Cclose()
-        document.removeEventListener('keydown', clickEsc)
+        this.close()
+        document.removeEventListener('keydown', clickEsc);
       }
     }
-    modalClose.addEventListener('click', clickEsc)
-    document.addEventListener('keydown', clickEsc)
-
+    modalClose.addEventListener('click', clickEsc);
+    document.addEventListener('keydown', clickEsc);
 
   }
-  Cclose(){    
-   let body  = document.body
-        body.classList.remove('is-modal-open')
-        body.querySelector('.modal').remove()
+
+ close(){    
+   let body  = document.body;
+        body.classList.remove('is-modal-open');
+        this.elem.remove();
     
   }
 }

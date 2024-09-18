@@ -22,6 +22,7 @@ export default class ProductCard {
         <img src="/assets/images/icons/plus-icon.svg" alt="icon">
     </button>
     </div> `
+    this.elem.classList.add("card")
     this.elem.innerHTML = template
   }
 

@@ -70,7 +70,7 @@ export default class StepSlider {
 
     thumb.ondragstart = () => false;
 
-    thumb.onmousedown = (event) => {
+    thumb.onpointerdown = (event) => {
       event.preventDefault();
       this.elem.classList.add('slider_dragging');
 
@@ -107,7 +107,6 @@ export default class StepSlider {
       }
 
       function onPointerUP() {
-        // const onPointerUP = ()=>{  
         document.removeEventListener('pointerup', onPointerUP);
         document.removeEventListener('pointermove', onPointerMove);
         slider.classList.remove('slider_dragging')
